@@ -21,5 +21,7 @@ Route::any('/', function () {
 
 //All version 1 related routes come here.
 Route::prefix('v1')->name('1.')->namespace('\v1')->middleware('auth:mobile')->group(function () {
-
+    Route::any('/', function () {
+        return response()->json(['server_time' => \Carbon\Carbon::now(), 'version' => '1'], 200, []);
+    });
 });

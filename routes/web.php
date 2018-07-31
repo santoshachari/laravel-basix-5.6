@@ -16,8 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::group(['domain' => 'admin.' . env('APP_DOMAIN')], function () {
-  Route::get('/', 'AdminAuth\LoginController@showLoginForm');
+  Route::get('/', 'AdminAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'AdminAuth\LoginController@login');
   Route::post('/logout', 'AdminAuth\LoginController@logout');
 
@@ -26,3 +28,7 @@ Route::group(['domain' => 'admin.' . env('APP_DOMAIN')], function () {
   Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
