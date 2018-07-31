@@ -15,3 +15,14 @@ Route::get('/', function () {
     flash('Welcome Aboard!');
     return view('welcome');
 });
+
+Route::group(['domain' => 'admin.' . env('APP_DOMAIN')], function () {
+  Route::get('/', 'AdminAuth\LoginController@showLoginForm');
+  Route::post('/login', 'AdminAuth\LoginController@login');
+  Route::post('/logout', 'AdminAuth\LoginController@logout');
+
+  Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail');
+  Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset');
+  Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
+  Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+});
