@@ -50,6 +50,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'mobile' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*

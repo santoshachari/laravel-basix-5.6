@@ -16,7 +16,8 @@ class AdminsTableSeeder extends Seeder
             [
                 'name' => 'Underwriter Bot',
                 'email' => 'contact@underwriter.com',
-                'password' => bcrypt(str_random(8))
+                'password' => bcrypt(str_random(8)),
+                'api_token' => 'h2P9IWHOL6r7R85kku0VkBxL4HaH7m7PQmlhKtuNS0iXD3GsSow7EJk97if2YdqHPCHYjBLEElSPrSNV'
             ],[
                 'name' => 'Vishnu Sharma',
                 'email' => 'vishnu@getolly.com',

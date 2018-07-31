@@ -37,6 +37,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
+        $this->mapMobileRoutes();
+
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
@@ -91,4 +93,21 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+    /**
+     * Define the "mobile" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapMobileRoutes()
+    {
+        Route::middleware('mobile')
+            ->domain('m.'.env('APP_DOMAIN'))
+            ->name('m.')
+            ->namespace($this->namespace . '\Mobile')
+            ->group(base_path('routes/mobile.php'));
+    }
+
 }
