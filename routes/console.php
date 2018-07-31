@@ -16,3 +16,10 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('read_json {filename}', function ($filename) {
+    $file = storage_path().'/import/'.$filename;
+    $json = json_decode(file_get_contents($file),true);
+    $metadata = $json['metadata'];
+    dd($json['payload']['OLLY'][$metadata]['smsJsonObject']['SmsArray'][0]);
+})->describe('Display an inspiring quote');
