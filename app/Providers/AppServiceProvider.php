@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //Local packages
+        if($this->app->environment() == 'local') {
+            $this->app->register('\Laracademy\Generators\GeneratorsServiceProvider');
+        }
     }
 }
