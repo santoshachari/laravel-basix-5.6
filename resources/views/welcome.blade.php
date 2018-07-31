@@ -8,6 +8,7 @@
         <title>Underwriter</title>
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
@@ -65,6 +66,7 @@
         </style>
     </head>
     <body>
+    @include('flash::message')
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
